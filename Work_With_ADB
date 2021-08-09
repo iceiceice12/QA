@@ -1,0 +1,34 @@
+adb tcpip 5555
+
+Список устройств:
+adb devices
+
+ Переместить файл с компьютера на телефон:
+adb push HelloWorld.txt /sdcard/HelloWorld.txt
+
+ Переместить файл с телефона на компьютер:
+adb pull /sdcard/Qa_phone/Test.docx
+
+Просмотр лога определенного приложения:
+adb logcat com.your.app 
+
+
+Через двоеточие можно установить параметр фильтрации сообщений. Например :E выводит только ошибки. V, D, I, W, E, F, S: adb logcat com.your.app:E
+
+Удалить все логи с устройства:  adb logcat -c
+
+Подключение через Wi-Fi:
+Если подключен через USB:
+adb tcpip 5555
+5555 - номер TCP порта, на котором устройство будет 
+ждать коннекцию от adb
+
+Если устройство рутованное:
+su
+setprop service.adb.tcp.port 5555
+stop adbd
+start adbd
+Посмотреть IP адрес и ввести:
+adb connect 192.168.1.121:5555  Удаление приложения: adb uninstall org.mozilla.firefox
+
+Перезагрузка устройства: adb reboot
